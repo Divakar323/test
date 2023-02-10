@@ -25,10 +25,6 @@ app.secret_key = 'This is your secret key to utilize session in Flask'
 @app.route('/',  methods=("POST", "GET"))
 def uploadFile():
     if request.method == 'POST':
-        # Upload file flask
-        uploaded_img = request.files['uploaded-file']
-        # Extracting uploaded data file name
-        img_filename = secure_filename(uploaded_img.filename)
         # Upload file to database (defined uploaded folder in static path)
         uploaded_img.save(os.path.join(app.config['UPLOAD_FOLDER'], img_filename))
         # Storing uploaded file path in flask session
